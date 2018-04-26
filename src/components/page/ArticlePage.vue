@@ -153,7 +153,7 @@
 </template>
 
 <script>
-	import Ckeditor from 'vue-ckeditor2'
+	import Ckeditor from '@/components/global/Ckeditor'
 	import clickOutside from '@/directive/clickOutside'
 	import LayoutBasic from '@/components/layout/Layout'
 	import RelatedSelect from '@/components/unit/edit/RelatedSelect'
@@ -174,9 +174,6 @@
 					list: []
 				},
 				config: {
-					toolbar: [
-						[ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ]
-					],
 					height: 300
 				},
 				openSEOBoxStatus: false,
@@ -247,9 +244,6 @@
 					}
 				],
 				ckeditorConfig: {
-					// toolbar: [
-					// 	[ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ]
-					// ],
 					height: 300,
 				}
 			}
@@ -339,241 +333,18 @@
 				this.articleData.startTime = data.post;
 				this.articleData.endTime = data.delete;
 			},
-			settingTag: function (data) {
-				console.log(data);
-			},
+			// settingTag: function (data) {
+			// 	console.log(data);
+			// },
 			onBlur (editor) {
-				console.log(editor)
+				// console.log(editor)
 			},
 			onFocus (editor) {
-				console.log(editor)
+				// console.log(editor)
 			}
 		},
 		mounted () {
 			bus.$on('getIndex', this.getIndex);
-			console.log(this.$root);
 		}
 	}
 </script>
-
-<style lang="sass" scoped>
-	.ckeditor
-		width: 100%
-	.linkSetting
-		.settingText
-			display: inline-block
-			line-height: 37px
-			height: 35px
-			vertical-align: middle
-			font-size: 15px
-			color: #519ECC
-			cursor: pointer
-		input[type="text"]
-			width: 246px
-			vertical-align: top
-			display: inline-block
-			height: 33px
-			padding: 0 10px
-			border: 1px solid #CCCCCC
-			border-radius: 3px 0 0 3px
-			margin-right: -6px
-		.select
-			.display
-				border-radius: 0 3px 3px 0 !important
-		.select
-			width: 140px
-			position: relative
-			vertical-align: middle
-			display: inline-block
-			&.open
-				.display
-					border: 1px solid #2A8DC8
-					background-color: #FFF
-					&::after
-						border-style: solid
-						border-width: 0 5px 5px 5px
-						border-color: transparent transparent #2a8dc8 transparent
-				.bgGray
-					.display
-						background-color: transparent
-				.optionList
-					display: block
-			.display
-				position: relative
-				display: block
-				color: #2A8DC8
-				line-height: 33px
-				cursor: pointer
-				border: 1px solid transparent
-				padding: 0 15px
-				border-radius: 0 3px 3px 0
-				padding: 0 30px 0 10px
-				border: 1px solid #D9D9D9
-				background: linear-gradient(#FAFBFB, #F4F4F4)
-				&::after
-					position: absolute
-					content: ''
-					top: 50%
-					margin-top: -3px
-					right: 10px
-					border-style: solid
-					border-width: 5px 5px 0 5px
-					border-color: #2a8dc8 transparent transparent transparent
-			.optionList
-				position: absolute
-				display: none
-				left: 0px
-				right: 0px
-				border: 1px solid #D9D9D9
-				overflow: auto
-				color: #666
-				margin: 0
-				padding: 0
-				list-style: none
-				background-color: #F7F7F7
-				z-index: 1
-			.option
-				cursor: pointer
-				padding: 10px
-				white-space: nowrap
-				&:hover
-					color: #FFF
-					background-color: #519FCC
-		.deleteBtn
-			margin-left: 10px
-			-webkit-border-radius: 50%
-			border-radius: 50%
-			display: inline-block
-			width: 17px
-			height: 17px
-			text-align: center
-			font-size: 13px
-			color: #8D8D8D
-			background-color: #E7E7E7
-			cursor: pointer
-
-
-	.SEOSetting
-		width: 100%
-	.SEODisplay
-		position: relative
-		display: block
-		color: #2A8DC8
-		width: 113px
-		height: 33px
-		line-height: 35px
-		border-radius: 3px
-		cursor: pointer
-		border: 1px solid transparent
-		padding-left: 15px
-		border: 1px solid #D9D9D9
-		background: linear-gradient(#FAFBFB, #F4F4F4)
-		svg
-			margin-top: -2px
-			vertical-align: middle
-			display: inline-block
-			margin-left: 10px
-		&:hover
-			border: 1px solid #519ECC
-			svg
-				path
-					fill: #519ECC
-	.SEOTextList
-		position: relative
-		border: 1px solid #CCC
-		-webkit-border-radius: 3px
-		border-radius: 3px
-		background-color: #FAFBFB
-		padding: 0 20px
-		color: #666
-		font-size: 15px
-		.editBtn
-			position: absolute
-			display: block
-			top: 15px
-			right: 15px
-			cursor: pointer
-		span
-			display: inline-block
-			vertical-align: middle
-	.SEOOptionBox
-		-webkit-box-sizing: border-box
-		-moz-box-sizing: border-box
-		box-sizing: border-box
-		width: 100%
-		padding: 20px 30px
-		border: 1px solid #CCC
-		background-color: #F1F1F1
-		border-radius: 3px
-		h4
-			margin: 0
-			font-size: 16px
-			color: #505A5F
-		p
-			color: #666
-		.row
-			margin: 25px 0
-			display: flex
-			&:first-child
-				margin-top: 0
-			.rowTitle
-				-webkit-box-sizing: border-box
-				-moz-box-sizing: border-box
-				box-sizing: border-box
-				display: inline-flex
-				height: 35px
-				font-size: 15px
-				color: #666
-				align-items: center
-				vertical-align: top
-				width: 90px
-			.rowContent
-				width: calc(100% - 90px)
-				-webkit-box-sizing: border-box
-				-moz-box-sizing: border-box
-				box-sizing: border-box
-				display: inline-flex
-				align-items: center
-				vertical-align: top
-				> input[type=text]
-					width: 100%
-					height: 33px
-					padding: 0 10px
-					border: 1px solid #CCCCCC
-					border-radius: 3px
-	.btnSection
-		margin-top: 15px
-		text-align: right
-		button
-			-webkit-box-sizing: border-box
-			-moz-box-sizing: border-box
-			box-sizing: border-box
-			font-size: 15px
-			line-height: 15px
-			padding: 10px 15px
-			border: 0
-			outline: none
-			border-radius: 3px
-			color: #FFF
-		.redBtn
-			background-color: #FF5253
-			box-shadow: 0 3px 0 #DB0506
-			&:hover
-				background-color: #FF7071
-				box-shadow: 0 3px 0 #F14243
-			&:active
-				transform: translateY(3px)
-				box-shadow: 0 0
-		.grayBtn
-			color: #7D7D7D
-			background-color: #EFEFEF
-			border: 1px solid #DDD
-			box-shadow: 0 3px 0 #DDD
-			margin-left: 15px
-			&:hover
-				background-color: #D8D8D8
-				box-shadow: 0 3px 0 #C8C8C8
-			&:active
-				transform: translateY(3px)
-				box-shadow: 0 0
-</style>

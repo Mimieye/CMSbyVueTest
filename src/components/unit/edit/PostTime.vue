@@ -137,7 +137,6 @@
 		},
 		watch: {
 			startTime: function (data) {
-				console.log("GG " + data);
 				if (this.startTime) {
 					let startTime = this.$options.filters.formatDate02(this.startTime).split(" ");
 
@@ -150,7 +149,6 @@
 				}
 			},
 			endTime: function (data) {
-				console.log("GG " + data);
 				if (this.endTime) {
 					let endTime = this.$options.filters.formatDate02(this.endTime).split(" ");
 

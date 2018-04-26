@@ -196,7 +196,6 @@
 				this.sendData("isDeleted", whichData[0]);
 			},
 			statusChange: function (data) {
-				console.log(data[1]);
 				let whichData = this.articleListData.filter(i => i.id === data[1]);
 				this.sendData("isEnabled", whichData[0]);
 			},
@@ -206,7 +205,6 @@
 			},
 
 			sendData: function (op, data) {
-				console.log(op, data);
 				let that = this;
 				$.ajax({
 					method: "PUT",
